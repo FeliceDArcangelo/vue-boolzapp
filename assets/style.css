@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    background-color: green;
+}
+
+.container{
+    position: fixed;
+    width: calc(100% - 8rem);
+    height: calc(100vh - 2rem);
+    left: 4rem;
+    top: 1rem;
+    background-color: white;
+    z-index: 99;
+    display: flex;
+}
+
+.list{
+    width: 35%;
+    height: 100%;
+}
+
+.list nav{
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.myId img{
+    width: 50px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.tectArea{
+    width: 65%;
+    height: 100%;
+}
