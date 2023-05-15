@@ -1,10 +1,12 @@
 const app = Vue.createApp({
     data(){
         return {
-        arrContacts: [
+            searchBar: '',
+            activeIndex: 0,
+            arrContacts: [
             {
                 name: 'Michele',
-                avatar: './img/avatar_1.png',
+                avatar: 'img/avatar_1.jpg',
                 visible: true,
                 messages: [
                     {
@@ -26,7 +28,7 @@ const app = Vue.createApp({
             },
             {
                 name: 'Fabio',
-                avatar: './img/avatar_2.png',
+                avatar: 'img/avatar_2.jpg',
                 visible: true,
                 messages: [
                     {
@@ -48,7 +50,7 @@ const app = Vue.createApp({
             },
             {
                 name: 'Samuele',
-                avatar: './img/avatar_3.png',
+                avatar: 'img/avatar_3.jpg',
                 visible: true,
                 messages: [
                     {
@@ -70,7 +72,7 @@ const app = Vue.createApp({
             },
             {
                 name: 'Alessandro B.',
-                avatar: './img/avatar_4.png',
+                avatar: 'img/avatar_4.jpg',
                 visible: true,
                 messages: [
                     {
@@ -87,7 +89,7 @@ const app = Vue.createApp({
             },
             {
                 name: 'Alessandro L.',
-                avatar: './img/avatar_5.png',
+                avatar: 'img/avatar_5.jpg',
                 visible: true,
                 messages: [
                     {
@@ -104,7 +106,7 @@ const app = Vue.createApp({
             },
             {
                 name: 'Claudia',
-                avatar: './img/avatar_5.png',
+                avatar: 'img/avatar_5.jpg',
                 visible: true,
                 messages: [
                     {
@@ -126,7 +128,7 @@ const app = Vue.createApp({
             },
             {
                 name: 'Federico',
-                avatar: './img/avatar_7.png',
+                avatar: 'img/avatar_7.jpg',
                 visible: true,
                 messages: [
                     {
@@ -143,8 +145,8 @@ const app = Vue.createApp({
             },
             {
                 name: 'Davide',
-                avatar: './img/avatar_8.png',
-                visible: true,
+                avatar: 'img/avatar_8.jpg',
+                visible: false,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -163,9 +165,41 @@ const app = Vue.createApp({
                     }
                 ],
             }
-        ]
-        
+        ],
+
+    writeMessage: {
+        date: '',
+        message: '',
+        status: 'sent'
     }
+    }
+    
+},
+methods: {
+    showChat(contact){
+        this.activeIndex = this.arrContacts.indexOf(contact)
+    },
+    estractData(data){
+	    return data.split(' ')[1].slice(0, -3);
+    },
+    upMessage(){
+            this.arrContacts[this.activeIndex].messages.push(this.writeMessage),
+            
+            this.writeMessage = {
+                        date: '',
+                        message: '',
+                        status: 'sent'
+            }
+    }
+},
+computed: {
+        
+    filterContact() {
+        return this.arrContacts.filter((arrContacts) => {
+            return arrContacts.name.toLowerCase().includes(this.searchBar.toLowerCase());
+
+        })
+    },
 }
 })
 

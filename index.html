@@ -12,23 +12,63 @@
     <div id="root">
         <div class="container">
             <div class="list">
-                <nav>
+                <nav class="contact">
                     <div class="myId">
-                        <img src="" alt="">
-                        <div class="name"></div>
+                        <img class="avatarImg" src="img/avatar_io.jpg" alt="">
+                        <div class="name">Sofia</div>
                     </div>
-                    <div>
+                    <div class="myIdSymbols">
                         <i class="fa-solid fa-circle-notch"></i>
                         <i class="fa-solid fa-message"></i>
                         <i class="fa-solid fa-ellipsis-vertical"></i>
                     </div>
                 </nav>
                 <div></div>
-                <div></div>
-                <div v-for="(contact, i) in arrContact">{{ contact.name }}</div>
+                <div class="presearch">
+                    <div class="searchContacts">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchBar">
+                    </div>
+                </div>
+                <ul>
+                    <li v-for="(contact, i) in arrContacts" class="contactList" @click="showChat(contact)">
+                        <img :src="contact.avatar" alt="" class="avatarImg" >
+                        <div>
+                            <div>{{ contact.name }}</div>
+                            <div class="underName">Ultimo messaggio inviato</div>
+                        </div>
+                    </li>
+                </ul>
 
             </div>
-            <div class="textArea"></div>
+            <div class="textArea">
+                <div class="contactMessaging">
+                    <div class="contactToMess">
+                        <img :src="arrContacts[activeIndex].avatar" alt="" class="avatarImg">
+                        <div class="info">
+                            <div>{{ arrContacts[activeIndex].name }}</div>
+                            <div class="underName">Ultimo accesso alle...</div>
+                        </div>
+                    </div>
+                    <div class="contactGadget">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-paperclip"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+                <div class="messArea">
+                    <div v-for="message in arrContacts[activeIndex].messages"
+                        :class="message.status == 'received' ? 'receivedMess' : 'sentMess'" class="message">
+                        <div>{{ message.message }}</div>
+                        <div>{{ estractData(message.date) }}</div>
+                    </div>
+                </div>
+                <div class="messBar">
+                    <i class="fa-regular fa-face-smile"></i>
+                    <input type="text" v-model="writeMessage.message" @keyup.enter="upMessage()" placeholder="Scrivi un messaggio">
+                    <i class="fa-solid fa-microphone"></i>
+                </div>
+            </div>
 
             
             

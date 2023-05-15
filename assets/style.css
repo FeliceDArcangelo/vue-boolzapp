@@ -6,7 +6,16 @@
 
 body{
     height: 100vh;
-    background-color: green;
+    background: linear-gradient(
+        to bottom,
+        rgb(0, 150, 136) 15%,
+        rgb(220, 220, 210) 0%
+    )
+}
+
+i{
+    font-size: large;
+    color: rgb(177, 177, 177);
 }
 
 .container{
@@ -25,21 +34,133 @@ body{
     height: 100%;
 }
 
-.list nav{
+.contactList{
+    list-style: none; 
+    display: flex; 
+    align-items: center;
+    margin: .5em;
+    margin-left: 1em;
+    gap: 1em;
+}
+
+.contact{
     height: 70px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
+}
+
+.contact .myId{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.myIdSymbols i{
+    padding-right: 1em;
+}
+
+.avatarImg{
+    width: 50px;
+    border-radius: 50%;
+}
+
+.underName{
+    font-size: small;
+    color: rgb(177, 177, 177);
+}
+
+.presearch{
+    background-color: antiquewhite;
+    height: 40px;
+}
+
+.searchContacts{
+    width: calc(100% - 1em);
+    height: calc(100% );
+    margin: .5em;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.searchContacts i{
+    padding-inline: 1em;
+    width: 9%;
+}
+
+.searchContacts input{
+    width: 90%;
+    border: none;
+    height: 100%;
+}
+
+.textArea{
+    width: 65%;
+    height: 100%;
+}
+
+.contactMessaging{
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contactToMess{
+    display: flex;
     align-items: center;
 }
 
-.myId img{
-    width: 50px;
-    aspect-ratio: 1/1;
-    border-radius: 50%;
-    border: 1px solid black;
+
+.contactGadget i{
+    padding-right: 1em;
+    font-size: large;
 }
 
-.tectArea{
-    width: 65%;
-    height: 100%;
+.messArea{
+    height: calc(100% - 120px);
+    background-image: url(../img/mine.jpg);
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+}
+
+.message{
+    min-width: 40%;
+    max-width: 60%;
+	border-radius: 5px;
+    padding: .5em;
+    margin: 1em;
+}
+
+.receivedMess{
+    background-color: white;
+    align-self: flex-start;
+}
+.sentMess{
+    background-color: rgb(213, 249, 186);
+    align-self: flex-end;
+}
+
+.messBar{
+    height: 50px;
+    text-align: center;
+    background-color: rgb(243, 238, 234);
+    vertical-align: middle;
+}
+
+.messBar input{
+    height: calc(100% - 1em);
+    width: 70%;
+    margin-top: .5em;
+    margin-bottom: .5em;
+    border: none;
+    padding-inline: 1em;
+    border-radius: 5px;
+}
+
+.messBar i{
+    width: 15%;
+    text-align: center;
 }
