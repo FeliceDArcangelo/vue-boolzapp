@@ -167,11 +167,16 @@ const app = Vue.createApp({
             }
         ],
 
-    writeMessage: {
-        date: '',
-        message: '',
-        status: 'sent'
-    }
+        newMessSent: {
+            date: '',
+            message: '',
+            status: 'sent'
+        },
+        newMessReceived : {
+            date: '',
+            message: ';-)',
+            status: 'received'
+        },
     }
     
 },
@@ -182,14 +187,23 @@ methods: {
     estractData(data){
 	    return data.split(' ')[1].slice(0, -3);
     },
-    upMessage(){
-            this.arrContacts[this.activeIndex].messages.push(this.writeMessage),
-            
-            this.writeMessage = {
-                        date: '',
-                        message: '',
-                        status: 'sent'
-            }
+    addMex() {
+    
+        this.arrContacts[this.activeIndex].messages.push(this.newMessSent),
+        
+        this.newMessSent = {
+                    date: '',
+                    message: '',
+                    status: 'sent',
+        }
+        let messIndex = this.activeIndex
+        setTimeout(() => {
+            this.arrContacts[messIndex].messages.push(this.newMessReceived)
+        }, 2000)
+    },
+
+    deleteMess(i){
+        this.arrContacts[this.activeIndex].messages.splice(i, 1)
     }
 },
 computed: {
